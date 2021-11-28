@@ -1,20 +1,46 @@
 <template>
   <main class="container">
-    <Card />
+
+
+
+    <Card 
+    v-for="(character, index) in characterArray"
+    :key="`char${index}`"
+    :thumb="character.images.main"
+    :firstName="character.name.first"
+    :middleName="character.name.middle"
+    :lastName="character.name.last"
+    :gender="character.gender"
+    :species="character.species"
+    :occupation="character.occupation"
+    :age="character.age"
+    :provenience="character.homePlanet"
+    />
+
+
+
+
+
+
   </main>
 </template>
 
 <script>
-import axios from 'axios';
+/* import axios from 'axios'; */
 import Card from '@/components/Card.vue'
 
 export default {
     name: 'Main',
     components: {
-      Card
-    },
+      Card,
 
-    created() {
+
+    },
+      props: {
+        characterArray: Array,
+      }
+
+/*     created() {
       this.takeInfo();
     },
 
@@ -37,7 +63,7 @@ export default {
     }
 
 
-
+ */
 
 
 
@@ -50,6 +76,7 @@ export default {
 main {
   padding: 20px 0;
   display: flex;
+  flex-wrap: wrap;
 }
 
 </style>

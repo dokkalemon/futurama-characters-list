@@ -1,15 +1,15 @@
 <template>
   <section class="card">
       <div class="img">
-          <img src="https://upload.wikimedia.org/wikipedia/en/2/28/Philip_Fry.png" alt="">
+          <img :src="thumb" alt="">
       </div>
       <div class="info">
-          <h2>Philip Jay Fry</h2>
-          <h4><span>Gender:<br></span>Male</h4>
-          <h4><span>Spieces:<br></span> Human</h4>
-          <h4><span>Occupation:<br></span> Intergalatic Delivery Boy</h4>
-          <h4><span>Age:<br></span> 25</h4>
-          <h4><span>Provenience:<br></span> Earth</h4>
+          <h2>{{ firstName }} {{ middleName }} {{ lastName }}</h2>
+          <h4><span>Gender:<br></span> {{ gender }}</h4>
+          <h4><span>Spieces:<br></span> {{ species }}</h4>
+          <h4><span>Occupation:<br></span> {{ occupation }}</h4>
+          <h4><span>Age:<br></span> {{ age }}</h4>
+          <h4><span>Provenience:<br></span> {{ provenience }}</h4>
       </div>
   </section>
 </template>
@@ -17,6 +17,18 @@
 <script>
 export default {
     name: 'Card',
+
+    props: {
+        thumb: String,
+        firstName: String,
+        middleName: String,
+        lastName: String,
+        gender: String,
+        species: String,
+        occupation: String,
+        age: String,
+        provenience: String,
+    }
 }
 </script>
 
@@ -25,7 +37,7 @@ export default {
 
 .card {
     height: 400px;
-    width: 50%;
+    width: 49%;
     border: 4px solid $primary-color;
     cursor: pointer;
     transition: all 0.1s ease;
