@@ -1,9 +1,9 @@
 <template>
   <div id="app" class="">
     
-    <Header />
+    <Header @searchChar="search"/>
 
-    <Main :characterArray="characterList"/>
+    <Main :characterArray="filteredChar"/>
   </div>
 </template>
 
@@ -23,9 +23,22 @@ export default {
       this.takeInfo();
     },
 
+    computed: {
+      filteredChar() {
+        if (this.searchedChar === '') {
+          return this.characterList;
+        }
+         return this.characterList.filter(item => {
+           return item.name.first.toLowerCase().includes(this.searchedChar.toLowerCase());
+         })
+        
+      }
+    },
+
     data() {
       return {
         characterList: null,
+        searchedChar: '',
       }
     },
 
@@ -38,6 +51,10 @@ export default {
         .catch(err => {
           console.log(err);
         })
+      },
+
+      search(dato) {
+        this.searchedChar = dato;
       }
     }
 

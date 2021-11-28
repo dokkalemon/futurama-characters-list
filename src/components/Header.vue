@@ -5,8 +5,8 @@
           <h2>Character List</h2>
           <div class="input-container">
               <form action="">
-                  <input type="text" placeholder="Inserisci il nome di un personaggio">
-                  <button type="submit">Search</button>
+                  <input type="text" placeholder="Inserisci il nome di un personaggio" v-model="userSearch" @keyup="$emit('searchChar', userSearch )">
+                  <button type="submit" @click.prevent="$emit('searchChar', userSearch )">Search</button>
                   <button type="reset" class="reset">Reset</button>
               </form>
           </div>
@@ -17,6 +17,14 @@
 <script>
 export default {
     name: 'Header',
+
+    data() {
+        return {
+            userSearch: ''
+        }
+    }
+    
+    
 }
 </script>
 
