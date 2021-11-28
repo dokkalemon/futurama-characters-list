@@ -55,7 +55,9 @@ export default {
 
       search(dato) {
         this.searchedChar = dato;
-      }
+      },
+
+  
     }
 
 
