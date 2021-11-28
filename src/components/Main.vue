@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 import Card from '@/components/Card.vue'
 
 export default {
@@ -13,6 +14,27 @@ export default {
       Card
     },
 
+    created() {
+      this.takeInfo();
+    },
+
+    data() {
+      return {
+        characterList: null,
+      }
+    },
+
+    methods: {
+      takeInfo() {
+        axios.get('https://api.sampleapis.com/futurama/characters')
+        .then(result => {
+          this.characterList = result.data;
+        })
+        .catch(err => {
+          console.log(err);
+        })
+      }
+    }
 
 
 
